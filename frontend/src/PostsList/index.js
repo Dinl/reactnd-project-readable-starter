@@ -4,7 +4,8 @@ import Post from '../Post/'
 import SearchBar from '../SearchBar'
 import CategoriesList from '../CategoriesList'
 import SortMenu from '../SortMenu'
-import { addPost, removePost, getPosts } from './actions'
+import NewPost from '../NewPost'
+import { getPosts } from './actions'
 
 class PostsList extends Component {
 
@@ -21,7 +22,7 @@ class PostsList extends Component {
 	};
 
 	render() {		
-		const { match, addPost, detail, sortType } = this.props;		
+		const { match, detail, sortType } = this.props;		
 		let { posts } = this.props;
 
 		//Filter stage
@@ -68,6 +69,8 @@ class PostsList extends Component {
 					</div>
 				))}
 
+				<NewPost />
+
 			</div>
 		)
 	}
@@ -82,8 +85,7 @@ function mapStateToProps ({ postsList, sortMenu }) {
 
 function mapDispatchToProps (dispatch) {
 	return {
-		addPost: (data) => dispatch(addPost(data)),
-		getPosts: data => dispatch(getPosts(data)),
+		getPosts: data => dispatch(getPosts(data))
 	}
 }
 
