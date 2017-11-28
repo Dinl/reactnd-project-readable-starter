@@ -1,25 +1,40 @@
 import * as ReadableAPI from "../readable-api";
 
-import { receivePost } from '../NewPost/actions'
-
-export const VOTE_POST = 'VOTE_POST';
-export const DELETING_POST = 'DELETING_POST';
-export const POST_DELETED = 'POST_DELETED'
+/**
+ * ACTIONS
+ */
+export const REMOVE_POST = 'REMOVE_POST';
+export const REMOVED_POST = 'REMOVED_POST'
 export const REQUEST_COMMENTS = 'REQUEST_COMMENTS'
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
+export const REQUEST_VOTE = 'REQUEST_VOTE';
+export const RECEIVED_VOTE = 'RECEIVED_VOTE';
 
-export function deletingPost () {
+/**
+ * DELETE POST ACTION
+ */
+export function removePost () {
     return {
-        type: DELETING_POST,
+        type: REMOVE_POST,
     }
-}
+};
 
-export function postDeleted () {
+export function removedPost () {
     return {
-        type: POST_DELETED,
+        type: REMOVED_POST,
     }
-}
+};
 
+export const deletePost = id => dispatch => {
+	dispatch(removePost());
+	ReadableAPI.deletePost(id).then(post => {
+		dispatch(REMOVED_POST);
+	});
+};
+
+/**
+ * GET COMMENT ACTIONS
+ */
 export function requestComments () {
     return {
         type: REQUEST_COMMENTS,
@@ -32,25 +47,34 @@ export function receiveComments () {
     }
 }
 
-export function votePost ({id, vote}) {
-    return {
-        type: VOTE_POST,
-        id,
-        vote
-    }
-}
-
-export const deletePost = id => dispatch => {
-	dispatch(deletingPost());
-	ReadableAPI.deletePost(id).then(post => {
-		dispatch(receivePost(post));
-	});
-};
-
 export const getComments = PostId => dispatch => {
 	dispatch(requestComments());
 	ReadableAPI.getPostsComments(PostId).then(comments => {
 		dispatch(receiveComments(comments));
+	});
+};
+
+/**
+ * VOTE ACTIONS
+ */
+
+export function requestVote () {
+    return {
+        type: REQUEST_VOTE,
+    }
+}
+
+export function receivedVote (post) {
+    return {
+		type: RECEIVED_VOTE,
+		post
+    }
+}
+
+export const votePost = (id, vote) => dispatch => {
+	dispatch(requestVote());
+	ReadableAPI.votePost(id, {"option": vote}).then(post => {
+		dispatch(receivedVote(post));
 	});
 };
 

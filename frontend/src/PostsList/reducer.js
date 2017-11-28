@@ -7,6 +7,11 @@ import {
 	RECEIVE_POST
 } from '../NewPost/actions'
 
+import {
+	REMOVED_POST,
+	RECEIVED_VOTE
+} from '../Post/actions'
+
 export function postsList (state = { items: [], isLoading: false }, actionData) {
     switch (actionData.type) {
 		case REQUEST_POSTS:
@@ -27,7 +32,22 @@ export function postsList (state = { items: [], isLoading: false }, actionData) 
 				...state,
 				items: [...state.items, post],
 				isLoading: false
-			}	
+			}
+		case REMOVED_POST:
+			const { postRemoved } = actionData;
+			return {
+				...state,
+				items: state.items.filter(post => post.id !== postRemoved.id),
+				isLoading: false
+			}
+		case RECEIVED_VOTE:
+			const newItems = state.items.map( post => (
+				post.id === actionData.post.id ? actionData.post : post
+			));
+			return {
+				...state,
+				items: newItems
+			}
         default :
             return state;
     }

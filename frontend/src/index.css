@@ -89,11 +89,13 @@ body {
 .vote-up, .vote-number, .vote-down {
 	float: right;
 	width: 33%;
+	cursor: pointer;
 }
 
 .vote-frame {
 	width: 70px;
 	height: 15px;
+	display: inline-block;
 }
 
 .search-bar {

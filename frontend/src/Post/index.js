@@ -7,7 +7,7 @@ import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down';
 import FaTrashO from 'react-icons/lib/fa/trash-o';
 import GoCommentDiscussion from 'react-icons/lib/go/comment-discussion'
 
-import { deletePost, getComments } from './actions'
+import { deletePost, getComments, votePost } from './actions'
 
 class Post extends Component {
 
@@ -35,13 +35,11 @@ class Post extends Component {
 							}							
 						</div>
 						<div className="category-frame">
-							{detail && 
-								<div className="category">
-									{post.category}
-									<FaTrashO className="delete-post-icon"
-										onClick={ () => this.props.deletePost(post.id) } />
-								</div>
-							}
+							<div className="category">
+								{post.category}
+								<FaTrashO className="delete-post-icon"
+									onClick={ () => this.props.deletePost(post.id) } />
+							</div>
 						</div>
 					</div>
 
@@ -73,27 +71,28 @@ class Post extends Component {
 				{/* The footer has the votes and comments  */}
 				{detail && 
 					<div className="post-frame head-footer">
-						{/* Vote frame with up/down and number items  */}
-						<div className="vote-frame">						
-							<div className="row">
+						<div className="row">
+							{/* Vote frame with up/down and number items  */}
+							<div className="vote-frame">							
 								<div className="vote-up">
-									<FaThumbsOUp />
+									<FaThumbsOUp onClick={ () => this.props.vote(post.id, "upVote") } />
 								</div>
 								<div className="vote-number">
 									{post.voteScore}
 								</div>
 								<div className="vote-down">
-									<FaThumbsODown />
-								</div>
-							</div>
-						</div>	
+									<FaThumbsODown onClick={ () => this.props.vote(post.id, "downVote") } />
+								</div>							
+							</div>	
 
-						{detail && 
-							<span className="post-comments-icon">
-								<GoCommentDiscussion />
-								{post.commentCount}
-							</span>
-						}				
+							{detail && 
+								<Link to={`/post/${post.id}`}
+									className="post-comments-icon">
+									<GoCommentDiscussion />
+									{post.commentCount}
+								</Link>
+							}
+						</div>			
 					</div>
 				}
 			</div>
@@ -103,8 +102,6 @@ class Post extends Component {
 }
 
 function mapStateToProps ({postReducer}) {
-	//const post_id = this.props.id;
-	//var idx = state.object1.object2.findIndex(obj => obj.id === post_id)
 	return {
 
 	}
@@ -113,7 +110,8 @@ function mapStateToProps ({postReducer}) {
 function mapDispatchToProps (dispatch) {
 	return {
 		deletePost: data => dispatch(deletePost(data)),
-		getComments: data => dispatch(getComments(data))
+		getComments: data => dispatch(getComments(data)),
+		vote: (id, vote) => dispatch(votePost(id, vote))
 	}
 }
 

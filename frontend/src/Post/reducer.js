@@ -1,23 +1,38 @@
 import {
-    VOTE_POST
+	REMOVE_POST, 
+	REMOVED_POST, 
+	REQUEST_COMMENTS, 
+	RECEIVE_COMMENTS, 
+	REQUEST_VOTE, 
+	RECEIVED_VOTE,
 } from './actions'
 
 export function postReducer (state = {}, action) {
     switch (action.type) {
-        case VOTE_POST:
-            const { id, vote } = action;
-            const  idx = state.postList.findIndex(obj => obj.id === id)
+        case REMOVE_POST:
             return {
-                ...state,
-                postList: [
-                    ...state.postList.slice(0, idx),
-                    {
-                        ...state.postList[idx],
-                        vote
-                    },
-                    ...state.postList.slice(idx + 1)
-                ]
-            }
+				...state,
+			}
+		case REMOVED_POST:
+			return {
+				...state,
+			}
+		case REQUEST_COMMENTS:
+			return {
+				...state,
+			}
+		case RECEIVE_COMMENTS:
+			return {
+				...state,
+			}
+		case REQUEST_VOTE:
+			return {
+				...state,
+			}
+		case RECEIVED_VOTE:
+			return {
+				...state,
+			}
         default :
             return state;
     }
