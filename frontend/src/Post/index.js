@@ -4,6 +4,10 @@ import Timestamp from 'react-timestamp'
 import { Link } from "react-router-dom";
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down';
+import FaTrashO from 'react-icons/lib/fa/trash-o';
+import GoCommentDiscussion from 'react-icons/lib/go/comment-discussion'
+
+import { deletePost, getComments } from './actions'
 
 class Post extends Component {
 
@@ -11,6 +15,10 @@ class Post extends Component {
 
 		const { post, detail } = this.props;
 		post.date = new Date(post.timestamp);
+
+		if(detail) {
+			this.props.getComments(post.id);
+		}
 
 		return (
 			<div className="post">
@@ -30,11 +38,8 @@ class Post extends Component {
 							{detail && 
 								<div className="category">
 									{post.category}
-								</div>
-							}
-							{!detail && 								
-								<div className="category">
-									{post.category}
+									<FaTrashO className="delete-post-icon"
+										onClick={ () => this.props.deletePost(post.id) } />
 								</div>
 							}
 						</div>
@@ -46,6 +51,12 @@ class Post extends Component {
 						<span className="date">
 							<Timestamp time={post.date} format='ago' />
 						</span>
+						{!detail && 
+							<span className="post-comments-icon">
+								<GoCommentDiscussion />
+								{post.commentCount}
+							</span>
+						}
 					</div>					
 				</div>
 
@@ -75,7 +86,14 @@ class Post extends Component {
 									<FaThumbsODown />
 								</div>
 							</div>
-						</div>					
+						</div>	
+
+						{detail && 
+							<span className="post-comments-icon">
+								<GoCommentDiscussion />
+								{post.commentCount}
+							</span>
+						}				
 					</div>
 				}
 			</div>
@@ -94,7 +112,8 @@ function mapStateToProps ({postReducer}) {
 
 function mapDispatchToProps (dispatch) {
 	return {
-		
+		deletePost: data => dispatch(deletePost(data)),
+		getComments: data => dispatch(getComments(data))
 	}
 }
 

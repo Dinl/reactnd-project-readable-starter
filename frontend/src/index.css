@@ -1,5 +1,6 @@
 :root {
 	--main-color: #b7d2ff;
+	--main-border-radius: 10px;
 	--content-background-color: white;
 }
 
@@ -26,6 +27,7 @@ body {
 .row {
 	width: 100%;
 	text-align: left;
+	display: inline-block;
 }
 
 .head-row {
@@ -72,7 +74,7 @@ body {
 
 .category {
 	border: 1px solid black;
-	border-bottom-left-radius: 10px;
+	border-bottom-left-radius: var(--main-border-radius);
 }
 
 .author{
@@ -97,7 +99,7 @@ body {
 .search-bar {
 	width: 70%;
 	height: 30px;
-	border-radius: 15px;
+	border-radius: var(--main-border-radius);
 	border: 1px solid black;
 	font-size: 20px;
 	padding-left: 15px;
@@ -110,7 +112,7 @@ body {
 	height: 30px;
 	line-height: 30px;
 	border: 1px solid black;
-	border-radius: 5px;
+	border-radius: var(--main-border-radius);
 	margin-right: 10px;
 	cursor: pointer;
 }
@@ -154,4 +156,90 @@ body {
 .post-list-summary-filter {
 	width: 30%;
 	display: inline-block;
+}
+
+.new-post-body{
+	border: 1px solid black;
+	padding: 20px 10px 10px 10px;
+}
+
+.new-post-row {
+	width: 100%;
+	display: inline-block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.new-post-title{
+	width: 67%;
+	height: 32px;
+	border-radius: var(--main-border-radius);
+	border: 1px solid black;
+	font-size: 20px;
+	float: left;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.new-post-category{
+	display: block;
+	width: 29%;
+	height: 34px;
+	float: right;	
+}
+
+.new-post-category .Select-control {
+	border: 1px solid black;
+	border-radius: var(--main-border-radius);
+}
+
+.new-post-text-area{
+	width: 99%;
+	border: 1px solid black;
+	border-radius: var(--main-border-radius);
+}
+
+.new-post-controls{
+	text-align: right;
+}
+
+.button {
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid black;
+	border-radius: 15px;
+	display: inline-block;
+	font-weight: bold;
+	cursor: pointer;
+	margin-left: 10px;
+	text-align: center;
+}
+
+.clear-button:hover {
+	background-color: orange;
+}
+
+.create-button:hover {
+	background-color: greenyellow;
+}
+
+.clear-button {
+	background-color: orangered;
+}
+
+.create-button {
+	background-color: green;
+}
+
+.delete-post-icon {
+	float: right;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.post-comments-icon{
+	display: block;
+	float: right;
+	cursor: pointer;
 }

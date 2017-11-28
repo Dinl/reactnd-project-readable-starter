@@ -18,6 +18,13 @@ export const getPosts = () =>
 	fetch(`${api}/posts`, {headers}).then(res => res.json())
 
 /**
+ * getPostsComments
+ */
+export const getPostsComments = (id) => 
+fetch(`${api}/posts/${id}/comments`, {headers}).then(res => res.json())
+
+	
+/**
  * getCategories
  */
 export const getCategories = () => 
@@ -34,4 +41,16 @@ fetch(`${api}/posts`, {
 			"Content-Type": "application/json"
 		},
 	body: JSON.stringify(post)
+	}).then(response => response.json())
+
+/**
+ * addPost
+ */
+export const deletePost = (id) =>
+fetch(`${api}/posts/${id}`, {
+	method: "DELETE",
+	headers: {
+			...headers,
+			"Content-Type": "application/json"
+		}
 	}).then(response => response.json())

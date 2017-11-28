@@ -5,7 +5,9 @@ import {
 export function newPostReducer (state = {}, actionData) {
     switch (actionData.type) {
         case RECEIVE_POST:
-            return state;
+            return {
+                ...state
+            };
         default :
             return state;
     }
