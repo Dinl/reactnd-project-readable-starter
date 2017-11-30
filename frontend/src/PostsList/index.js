@@ -21,7 +21,7 @@ class PostsList extends Component {
 		}		
 	};
 
-	render() {		
+	render() {
 		const { match, detail, sortType } = this.props;		
 		let { posts } = this.props;
 
@@ -68,8 +68,7 @@ class PostsList extends Component {
 						/>
 					</div>
 				))}
-
-				<NewPost />
+				{!detail && <NewPost />}			
 
 			</div>
 		)

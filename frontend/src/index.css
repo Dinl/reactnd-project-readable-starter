@@ -244,4 +244,26 @@ body {
 	display: block;
 	float: right;
 	cursor: pointer;
+	color: royalblue;
+	text-decoration: none;
+}
+
+.comment-subtitle {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.comment {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	border-bottom-right-radius: var(--main-border-radius);
+}
+
+.comment-author {
+	
+}
+
+.comment-date {
+
 }

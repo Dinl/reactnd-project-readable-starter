@@ -1,8 +1,6 @@
 import {
 	REMOVE_POST, 
 	REMOVED_POST, 
-	REQUEST_COMMENTS, 
-	RECEIVE_COMMENTS, 
 	REQUEST_VOTE, 
 	RECEIVED_VOTE,
 } from './actions'
@@ -14,14 +12,6 @@ export function postReducer (state = {}, action) {
 				...state,
 			}
 		case REMOVED_POST:
-			return {
-				...state,
-			}
-		case REQUEST_COMMENTS:
-			return {
-				...state,
-			}
-		case RECEIVE_COMMENTS:
 			return {
 				...state,
 			}

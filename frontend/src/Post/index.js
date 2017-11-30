@@ -1,28 +1,25 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import Timestamp from 'react-timestamp'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Timestamp from 'react-timestamp';
 import { Link } from "react-router-dom";
+import CommentList from '../CommentsList';
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down';
 import FaTrashO from 'react-icons/lib/fa/trash-o';
-import GoCommentDiscussion from 'react-icons/lib/go/comment-discussion'
+import GoCommentDiscussion from 'react-icons/lib/go/comment-discussion';
 
-import { deletePost, getComments, votePost } from './actions'
+import { deletePost, votePost } from './actions'
 
 class Post extends Component {
 
 	render() {
 
 		const { post, detail } = this.props;
-		post.date = new Date(post.timestamp);
-
-		if(detail) {
-			this.props.getComments(post.id);
-		}
+		post.date = new Date(post.timestamp);		
 
 		return (
 			<div className="post">
-				{/* The Head has the tile, author, date and category info  */}
+				{/* The Head has the title, author, date and category info  */}
 				<div className="post-frame head-row">
 					{/* Title and category  */}
 					<div className="row ">
@@ -50,10 +47,12 @@ class Post extends Component {
 							<Timestamp time={post.date} format='ago' />
 						</span>
 						{!detail && 
-							<span className="post-comments-icon">
+							<Link to={`/post/${post.id}`}
+								className="post-comments-icon">
 								<GoCommentDiscussion />
 								{post.commentCount}
-							</span>
+							</Link>
+							
 						}
 					</div>					
 				</div>
@@ -86,15 +85,15 @@ class Post extends Component {
 							</div>	
 
 							{detail && 
-								<Link to={`/post/${post.id}`}
-									className="post-comments-icon">
+								<span className="post-comments-icon">
 									<GoCommentDiscussion />
 									{post.commentCount}
-								</Link>
+								</span>
 							}
 						</div>			
 					</div>
 				}
+				{detail && <CommentList postId={post.id} />}
 			</div>
 			
 		)
@@ -110,7 +109,6 @@ function mapStateToProps ({postReducer}) {
 function mapDispatchToProps (dispatch) {
 	return {
 		deletePost: data => dispatch(deletePost(data)),
-		getComments: data => dispatch(getComments(data)),
 		vote: (id, vote) => dispatch(votePost(id, vote))
 	}
 }
