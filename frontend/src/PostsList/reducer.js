@@ -34,7 +34,6 @@ export function postsList (state = { items: [], isLoading: false }, actionData) 
 				isLoading: false
 			}
 		case REMOVED_POST:
-		debugger
 			const { postRemoved } = actionData;
 			return {
 				...state,

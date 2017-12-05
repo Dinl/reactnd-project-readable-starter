@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Comment from '../Comment'
 import { getComments } from './actions'
+import NewComment from '../NewComment'
 
 class CommentsList extends Component {
 	
@@ -16,7 +17,7 @@ class CommentsList extends Component {
 		
 		return (
 			<div>
-				<div className="row comment-subtitle">
+				<div className="row comment-subtitle padding-10t">
 					<span>Comments: </span>
 				</div>				
 				{comments && Array.isArray(comments) && comments.map( (comment) => (
@@ -27,6 +28,10 @@ class CommentsList extends Component {
 						/>
 					</div>
 				))}
+				{comments && Array.isArray(comments) && comments.length === 0 &&
+					<span>No comments found</span>
+				}
+				<NewComment />
 			</div>
 		)
 	}

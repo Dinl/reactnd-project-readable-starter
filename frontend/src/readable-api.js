@@ -57,10 +57,34 @@ fetch(`${api}/posts/${id}`, {
 	}).then(response => response.json())
 
 /**
- * addPost
+ * deletePost
  */
 export const deletePost = (id) =>
 fetch(`${api}/posts/${id}`, {
+	method: "DELETE",
+	headers: {
+			...headers,
+			"Content-Type": "application/json"
+		}
+	}).then(response => response.json())
+
+/**
+ * deleteComment
+ */
+export const deleteComment = (id) =>
+fetch(`${api}/comments/${id}`, {
+	method: "DELETE",
+	headers: {
+			...headers,
+			"Content-Type": "application/json"
+		}
+	}).then(response => response.json())
+
+/**
+ * addComment
+ */
+export const addComment = (id) =>
+fetch(`${api}/comments/${id}`, {
 	method: "DELETE",
 	headers: {
 			...headers,

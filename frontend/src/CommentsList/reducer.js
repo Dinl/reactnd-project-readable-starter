@@ -19,9 +19,11 @@ export function commentListReducer (state = {items: [], isLoading: false}, actio
 				isLoading: false,
 			}
 		case REMOVED_COMMENT:
+			const { commentRemoved } = actionData;
 			return {
 				...state,
-				isLoading: false,
+				items: state.items.filter(comment => comment.id !== commentRemoved.id),
+				isLoading: false
 			}
 		case REQUEST_COMMENT_OPERATION:
 			return {

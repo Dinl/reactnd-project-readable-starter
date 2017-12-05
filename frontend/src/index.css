@@ -160,12 +160,12 @@ body {
 	display: inline-block;
 }
 
-.new-post-body{
+.new-post-body, .new-comment-body {
 	border: 1px solid black;
 	padding: 20px 10px 10px 10px;
 }
 
-.new-post-row {
+.new-post-row, .new-comment-row {
 	width: 100%;
 	display: inline-block;
 	padding-top: 10px;
@@ -260,10 +260,26 @@ body {
 	border-bottom-right-radius: var(--main-border-radius);
 }
 
+.comment-frame {
+	padding: 10px;
+}
+
 .comment-author {
-	
+	font-weight: bold;
 }
 
 .comment-date {
+	float: right;
+	color: gray;
+	font-size: 12px;
+}
 
+.padding-10t {
+	padding-top: 10px;
+}
+
+.delete-comment-icon{
+	float: right;
+	margin-left: 10px;
+	cursor: pointer;
 }
