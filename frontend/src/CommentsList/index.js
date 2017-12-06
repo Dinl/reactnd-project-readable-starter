@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Comment from '../Comment'
 import { getComments } from './actions'
-import NewComment from '../NewComment'
-import FaPlusCircle from 'react-icons/lib/fa/plus-circle'
+import { Row, Col } from 'reactstrap';
 
 class CommentsList extends Component {
 	
@@ -14,32 +13,24 @@ class CommentsList extends Component {
 
 	render() {
 		//Get the comment list
-		const { postId, comments } = this.props;
+		const { comments } = this.props;
 		
 		return (
-			<div>
-				<div className="row comment-subtitle padding-10t">
+			<Row className="no-margin-left no-margin-right">
+				<Row className="full-width comment-subtitle padding-10t no-margin-left no-margin-right">
 					<span>Comments: </span>
-				</div>				
+				</Row>
+
 				{comments && Array.isArray(comments) && comments.map( (comment) => (
-					<div key={`${comment.id}_li`}>
-						<Comment 
-							key = {comment.id}
-							comment ={comment}
-						/>
-					</div>
+					<Comment 
+						key = {comment.id}
+						comment ={comment}
+					/>
 				))}
 				{comments && Array.isArray(comments) && comments.length === 0 &&
 					<span>No comments found</span>
 				}
-				<div className="row" >         			
-					<FaPlusCircle 
-						className="add-button"
-						size={42} />
-				</div>
-				
-				<NewComment postId = {postId} />
-			</div>
+			</Row>
 		)
 	}
 }

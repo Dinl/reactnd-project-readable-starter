@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Timestamp from 'react-timestamp';
 import FaTrashO from 'react-icons/lib/fa/trash-o';
 import { deleteComment } from './actions'
+import { Row, Col } from 'reactstrap';
 
 class Comment extends Component {
 
@@ -12,19 +13,23 @@ class Comment extends Component {
 		comment.date = new Date(comment.timestamp);	
 
 		return (
-			<div className="comment">
+			<Row className="full-width comment no-margin-left no-margin-right">
 				{/* The Head has the title, author and date */}
-				<div className="comment-frame">
-					<div className="row">
-						<span className="comment-author">@{comment.author}: </span>						
-						<FaTrashO className="delete-comment-icon" onClick={ () => this.props.deleteComment(comment.id) } />
-						<Timestamp className="comment-date" time={comment.date} format='ago' />				
-					</div>
-					<div className="row padding-10t">
+				<Col xs={12} className="comment-frame">
+					<Row className="no-margin-left no-margin-right">
+						<Col xs={6} className="author">
+							<span className="comment-author">@{comment.author}: </span>							
+						</Col>
+						<Col xs={6}>
+							<FaTrashO className="delete-comment-icon" onClick={ () => this.props.deleteComment(comment.id) } />
+							<Timestamp className="comment-date" time={comment.date} format='ago' />	
+						</Col>		
+					</Row>
+					<Row className="no-margin-left no-margin-right">
 						<span>{comment.body}</span>						
-					</div>
-				</div>							
-			</div>
+					</Row>
+				</Col>							
+			</Row>
 		)
 	}
 }

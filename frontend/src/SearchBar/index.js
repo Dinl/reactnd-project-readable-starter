@@ -9,7 +9,7 @@ class SearchBar extends Component {
 			<div className="search-bar-frame">
 				<input type="text" 
 					className="search-bar"
-					placeholder="Filter by..."
+					placeholder="Filter by content..."
 					onChange={(event) => filter(event.target.value)} />
 			</div>
 		)

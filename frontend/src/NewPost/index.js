@@ -1,15 +1,17 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Select from 'react-select';
 import TextareaAutosize from 'react-autosize-textarea';
-import { addPost } from './actions'
-import { guid } from '../utils'
+import { Row, Col, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import { addPost, toogle } from './actions';
+import { guid } from '../utils';
 
 class NewPost extends Component {
     state = {
         title: "",
 		category: "",
-        body: "",
+		body: "",
+		isOpen: true
     }
 
     createPost = () => {
@@ -27,14 +29,19 @@ class NewPost extends Component {
             category: "",
             body: "",
         });
-    }
+	}
+	
+	toggleModal = () => {
+		this.props.toogle();
+	}
 
     render() {
         //Get categories from props
-        const { categories } = this.props;
-
+        const { categories, isOpen } = this.props;
         return (
-            <div>
+            <Modal className="modal-lg" isOpen={isOpen}>
+				<ModalHeader toggle={this.toggleModal}>Create Post</ModalHeader>
+				<ModalBody>
                 <div className="new-post-body">
                     <div className="new-post-row">
                         <input type="text"
@@ -60,33 +67,29 @@ class NewPost extends Component {
                                 placeholder="insert comment here..." 
                                 value={this.state.body}
                                 onChange={ event => this.setState({'body': event.target.value})} />
-                    </div>
-                    <div className="new-post-row">
-                        <div className="new-post-controls" >
-                            <div className="button clear-button" onClick={ () => this.clearPost() }>
-                                <span>Clear!</span>
-                            </div>
-                            <div className="button create-button" onClick={ () => this.createPost()}>
-                                <span>Create!</span>
-                            </div>
-                        </div>
-                    </div>                    
-                </div>
-                
-            </div>
+                    </div>                  
+                </div> 
+				</ModalBody>
+				<ModalFooter>
+					<Button color="primary" onClick={ () => this.createPost()}>Create</Button>{' '}
+            		<Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
+				</ModalFooter>
+            </Modal>
         )
     }
 }
 
-function mapStateToProps ({categoriesList}) {
+function mapStateToProps ({categoriesList, newPostReducer}) {
 	return {
-        categories: categoriesList.items
+		categories: categoriesList.items,
+		isOpen: newPostReducer.isOpen
 	}
 }
 
 function mapDispatchToProps (dispatch) {
 	return {
-        addPost: data => dispatch(addPost(data))
+		addPost: data => dispatch(addPost(data)),
+		toogle: () => dispatch(toogle())
 	}
 }
 

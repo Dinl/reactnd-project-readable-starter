@@ -8,6 +8,7 @@ import thunk from "redux-thunk";
 import reducer from './reducers'
 
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import App from './App';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Timestamp from 'react-timestamp';
 import { Link } from "react-router-dom";
 import CommentList from '../CommentsList';
+import NewComment from '../NewComment'
+import { Row, Col } from 'reactstrap';
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down';
 import FaTrashO from 'react-icons/lib/fa/trash-o';
@@ -20,57 +22,61 @@ class Post extends Component {
 		return (
 			<div className="post">
 				{/* The Head has the title, author, date and category info  */}
-				<div className="post-frame head-row">
+				<Row className="post-frame head-row no-margin-left no-margin-right">
 					{/* Title and category  */}
-					<div className="row ">
-						<div className="title">
+					<Row className="full-width no-margin-left no-margin-right">
+						<Col xs={6} className="title">
 							{detail && <b>{post.title}</b> }
 							{!detail && 
 								<Link to={`/post/${post.id}`}>
 									<b>{post.title}</b>
 								</Link>
 							}							
-						</div>
-						<div className="category-frame">
+						</Col>
+						<Col xs={6} className="category-frame no-padding-right">
 							<div className="category">
 								{post.category}
 								<FaTrashO className="delete-post-icon"
 									onClick={ () => this.props.deletePost(post.id) } />
 							</div>
-						</div>
-					</div>
+						</Col>
+					</Row>
 
 					{/* Author and post date */}
-					<div className="row">
-						<span className="author">@{post.author} - </span>
-						<span className="date">
-							<Timestamp time={post.date} format='ago' />
-						</span>
-						{!detail && 
-							<Link to={`/post/${post.id}`}
-								className="post-comments-icon">
-								<GoCommentDiscussion />
-								{post.commentCount}
-							</Link>
-							
-						}
-					</div>					
-				</div>
+					<Row className="full-width no-margin-left no-margin-right">
+						<Col className="author" xs={6}>
+							<span>@{post.author} - </span>
+							<span className="date">
+								<Timestamp time={post.date} format='ago' />
+							</span>
+						</Col>
+						<Col xs={6}>
+							{!detail && 
+								<Link to={`/post/${post.id}`}
+									className="post-comments-icon">
+									<GoCommentDiscussion />
+									{post.commentCount}
+								</Link>
+								
+							}
+						</Col>
+					</Row>					
+				</Row>
 
 				{/* The body show only the content  */}
 				{detail && 
-					<div className="post-frame head-content">
+					<Row className="post-frame head-content no-margin-left no-margin-right">
 						{/* Body content */}
 						<div>
 							<span className="body">{post.body}</span>
 						</div>
-					</div>
+					</Row>
 				}
 
 				{/* The footer has the votes and comments  */}
 				{detail && 
-					<div className="post-frame head-footer">
-						<div className="row">
+					<Row className="post-frame head-footer no-margin-left no-margin-right">
+						<Col xs={6} className="vote">
 							{/* Vote frame with up/down and number items  */}
 							<div className="vote-frame">							
 								<div className="vote-up">
@@ -83,17 +89,19 @@ class Post extends Component {
 									<FaThumbsODown onClick={ () => this.props.vote(post.id, "downVote") } />
 								</div>							
 							</div>	
-
+						</Col>
+						<Col xs={6}>
 							{detail && 
 								<span className="post-comments-icon">
 									<GoCommentDiscussion />
 									{post.commentCount}
 								</span>
 							}
-						</div>			
-					</div>
+						</Col>			
+					</Row>
 				}
-				{detail && <CommentList postId={post.id} />}
+				{detail && 	<NewComment postId = {post.id} /> }
+				{detail && <CommentList postId = {post.id} /> }
 			</div>
 			
 		)
