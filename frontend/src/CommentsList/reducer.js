@@ -1,5 +1,8 @@
 import {
-	ADD_COMMENT, 
+	ADD_COMMENT
+} from '../NewComment/actions'
+
+import {
 	RECEIVE_COMMENTS, 
 	REMOVED_COMMENT, 
 	REQUEST_COMMENT_OPERATION,
@@ -7,9 +10,11 @@ import {
 
 export function commentListReducer (state = {items: [], isLoading: false}, actionData) {
     switch (actionData.type) {
-        case ADD_COMMENT:
+		case ADD_COMMENT:
+			const { comment } = actionData; 
             return {
 				...state,
+				items: [...state.items, comment],
 				isLoading: false,
 			}
 		case RECEIVE_COMMENTS:

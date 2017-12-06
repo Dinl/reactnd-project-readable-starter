@@ -3,7 +3,6 @@ import * as ReadableAPI from "../readable-api";
 /**
  * ACTIONS
  */
-export const ADD_COMMENT = 'ADD_COMMENT';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const REMOVED_COMMENT = 'REMOVED_COMMENT';
 export const REQUEST_COMMENT_OPERATION = 'REQUEST_COMMENT_OPERATION';
@@ -14,16 +13,6 @@ export const REQUEST_COMMENT_OPERATION = 'REQUEST_COMMENT_OPERATION';
 export function requestCommentOperation () {
     return {
 		type: REQUEST_COMMENT_OPERATION,
-    }
-}
-
-/**
- * ADD ACTIONS
- */
-
-export function addComment () {
-    return {
-		type: ADD_COMMENT,
     }
 }
 

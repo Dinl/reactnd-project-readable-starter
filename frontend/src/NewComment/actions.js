@@ -23,8 +23,8 @@ export const getPostsComments = postId => dispatch => {
     });
 };
 
-export const addComments = (postId, comment) => dispatch => {
-	ReadableAPI.addComment(postId, comment).then(res => {
+export const createComment = (comment) => dispatch => {
+	ReadableAPI.addComment(comment).then(res => {
 		dispatch(addComment(res));
     });
 };

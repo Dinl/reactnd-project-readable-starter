@@ -18,7 +18,7 @@ class Comment extends Component {
 					<div className="row">
 						<span className="comment-author">@{comment.author}: </span>						
 						<FaTrashO className="delete-comment-icon" onClick={ () => this.props.deleteComment(comment.id) } />
-						<Timestamp className="comment-date" time={comment.date} format='ago' autoUpdate={60} />				
+						<Timestamp className="comment-date" time={comment.date} format='ago' />				
 					</div>
 					<div className="row padding-10t">
 						<span>{comment.body}</span>						

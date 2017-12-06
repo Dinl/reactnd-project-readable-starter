@@ -83,11 +83,12 @@ fetch(`${api}/comments/${id}`, {
 /**
  * addComment
  */
-export const addComment = (id) =>
-fetch(`${api}/comments/${id}`, {
-	method: "DELETE",
+export const addComment = (comment) =>
+fetch(`${api}/comments`, {
+	method: "POST",
 	headers: {
 			...headers,
 			"Content-Type": "application/json"
-		}
+		},
+	body: JSON.stringify(comment)
 	}).then(response => response.json())

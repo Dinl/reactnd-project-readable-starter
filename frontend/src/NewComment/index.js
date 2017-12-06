@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getPostsComments, addComment } from './actions'
+import { getPostsComments, createComment } from './actions'
 import TextareaAutosize from 'react-autosize-textarea';
+import { guid } from '../utils'
 
 class NewComment extends Component {
 	
 	state = {
-
+		body: ""
 	}
 
 	componentDidMount() {
@@ -14,14 +15,20 @@ class NewComment extends Component {
 		this.props.getPostsComments(postId);
 	}
 
-	createComment (data) {
-		this.props.addComment(data);
+	createComment () {
+		let newComment = {
+            ...this.state,
+            id: guid(),
+			timestamp: Date.now(),
+			parentId: this.props.postId,
+			author: "TODO"
+		}		
+		this.props.createComment(newComment);
+		this.setState({body: ""})
 	}
 
 	render() {
-		//Get the comment list
-		const { postId, comments } = this.props;
-		
+	
 		return (
 			<div>
 				<div className="new-comment-body">
@@ -57,7 +64,7 @@ function mapStateToProps ({commentListReducer}) {
 function mapDispatchToProps (dispatch) {
 	return {
 		getPostsComments: data => dispatch(getPostsComments(data)),
-		addComment: data => dispatch(addComment(data))
+		createComment: data => dispatch(createComment(data))
 	}
 }
 

@@ -283,3 +283,7 @@ body {
 	margin-left: 10px;
 	cursor: pointer;
 }
+
+.add-button{
+	color: var(--main-color),
+}
