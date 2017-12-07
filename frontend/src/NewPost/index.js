@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Select from 'react-select';
 import TextareaAutosize from 'react-autosize-textarea';
 import { Row, Col, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
-import { getPost, addPost, toogle } from './actions';
+import { getPost, addPost, editPost, toogle } from './actions';
 import { guid } from '../utils';
 
 class NewPost extends Component {
@@ -11,7 +11,8 @@ class NewPost extends Component {
         title: "",
 		category: "",
 		body: "",
-		isOpen: true
+		isOpen: true,
+		isEdit: false
     }
 
     createPost = () => {
@@ -33,7 +34,22 @@ class NewPost extends Component {
 	
 	toggleModal = () => {
 		this.props.toogle();
-    }
+	}
+	
+	componentWillReceiveProps(nextProps) {
+		const { post } = nextProps;
+		
+		if(!post) return;
+
+		this.setState({
+			title: post.title,
+			category: post.category,
+			body: post.body,
+			author: post.author,
+			isEdit: true
+		});
+		
+	  }
 
     
     render() {
@@ -92,7 +108,10 @@ class NewPost extends Component {
                     </Row> 
 				</ModalBody>
 				<ModalFooter>
-					<Button color="primary" onClick={ () => this.createPost()}>Create</Button>{' '}
+					{this.state.isEdit && <Button color="primary" onClick={ () => this.editPost()}>Edit</Button>}
+					{' '}
+					{!this.state.isEdit && <Button color="primary" onClick={ () => this.createPost()}>Create</Button>}
+					{' '}
             		<Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
 				</ModalFooter>
             </Modal>
@@ -113,6 +132,7 @@ function mapDispatchToProps (dispatch) {
 	return {
         getPost: data => dispatch(getPost(data)),
 		addPost: data => dispatch(addPost(data)),
+		editPost: data => dispatch(editPost(data)),
 		toogle: () => dispatch(toogle())
 	}
 }

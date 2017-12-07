@@ -50,6 +50,20 @@ fetch(`${api}/posts`, {
 	}).then(response => response.json())
 
 /**
+ * editPost
+ */
+export const editPost = (post) =>
+fetch(`${api}/posts/${post.id}`, {
+	method: "PUT",
+	headers: {
+			...headers,
+			"Content-Type": "application/json"
+		},
+	body: JSON.stringify(post)
+	}).then(response => response.json())
+	
+
+/**
  * votePost
  */
 export const votePost = (id, vote) =>

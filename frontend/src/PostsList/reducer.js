@@ -4,7 +4,9 @@ import {
 } from './actions'
 
 import {
-	RECEIVE_POST
+	RECEIVE_POST,
+	CREATED_POST,
+	EDITED_POST
 } from '../NewPost/actions'
 
 import {
@@ -26,7 +28,7 @@ export function postsList (state = { items: [], isLoading: false }, actionData) 
 				items: posts.filter(post => !post.deleted),
 				isLoading: false
 			}
-		case RECEIVE_POST: 
+		case CREATED_POST:
 			const { post } = actionData;
 			return {
 				...state,
