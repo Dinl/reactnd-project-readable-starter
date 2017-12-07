@@ -18,6 +18,12 @@ export const getPosts = () =>
 	fetch(`${api}/posts`, {headers}).then(res => res.json())
 
 /**
+ * getPost
+ */
+export const getPost = (id) => 
+	fetch(`${api}/posts/${id}`, {headers}).then(res => res.json())
+
+/**
  * getPostsComments
  */
 export const getPostsComments = (id) => 

@@ -5,14 +5,21 @@ import {
 
 export function newPostReducer (state = {isOpen: false}, actionData) {
     switch (actionData.type) {
-        case RECEIVE_POST:
+		case RECEIVE_POST:
+			const { post } = actionData;
             return {
-                ...state
+				...state,
+				post
 			};
 		case TOOGLE:
+			const { id } = actionData;
 			return {
 				...state,
-				isOpen: !state.isOpen
+				title: state.isOpen ? state.title : "",
+				category: state.isOpen ? state.category : "",
+				body: state.isOpen ? state.body : "",
+				isOpen: !state.isOpen,
+				id
 			}
         default :
             return state;

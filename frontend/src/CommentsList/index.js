@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Comment from '../Comment'
 import { getComments } from './actions'
-import { Row, Col } from 'reactstrap';
+import { Row } from 'reactstrap';
 
 class CommentsList extends Component {
 	

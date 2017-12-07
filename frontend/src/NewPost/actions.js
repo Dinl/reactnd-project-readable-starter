@@ -10,14 +10,23 @@ export const receivePost = post => {
     }
 }
 
-export const toogle = () => {
+export const toogle = (id) => {
     return {
-        type: TOOGLE
+        type: TOOGLE,
+        id
     }
 }
 
+export const getPost = post => dispatch => {
+	ReadableAPI.getPost(post).then(res => {
+        dispatch(receivePost(res));
+        dispatch(toogle());
+    });
+};
+
 export const addPost = post => dispatch => {
 	ReadableAPI.addPost(post).then(res => {
-		dispatch(receivePost(res));
+        dispatch(receivePost(res));
+        dispatch(toogle());
     });
 };

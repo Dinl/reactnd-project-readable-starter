@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getPostsComments, createComment } from './actions'
 import TextareaAutosize from 'react-autosize-textarea';
+import { Row, Col, Button } from 'reactstrap';
 import { guid } from '../utils'
 
 class NewComment extends Component {
@@ -21,7 +22,6 @@ class NewComment extends Component {
             id: guid(),
 			timestamp: Date.now(),
 			parentId: this.props.postId,
-			author: "TODO"
 		}		
 		this.props.createComment(newComment);
 		this.setState({body: ""})
@@ -30,27 +30,35 @@ class NewComment extends Component {
 	render() {
 	
 		return (
-			<div>
-				<div className="new-comment-body">
-                    <div className="new-comment-row">
-                        <TextareaAutosize rows={3}
-                                className="new-post-text-area"
-                                placeholder="insert comment here..." 
-                                value={this.state.body}
-                                onChange={ event => this.setState({'body': event.target.value})} />
-                    </div>
-                    <div className="new-comment-row">
-                        <div className="new-post-controls" >
-                            <div className="button clear-button" onClick={ () => this.clearComment() }>
-                                <span>Clear!</span>
-                            </div>
-                            <div className="button create-button" onClick={ () => this.createComment()}>
-                                <span>Create!</span>
-                            </div>
-                        </div>
-                    </div>                    
-                </div>
-			</div>
+			<Row className="new-comment-body no-margin-left no-margin-right">
+				<Row className="full-width padding-10t ">					
+					<Col xs={6}>
+						<input type="text"
+							name="author"
+							className="full-width new-post-title"
+							placeholder="Insert author here..."
+							value={this.state.author}
+							onChange={ event => this.setState({'author': event.target.value}) } />
+					</Col>
+					<Col xs={6}></Col>
+				</Row>
+				<Row className="full-width padding-10t ">
+					<Col xs={12}>
+						<TextareaAutosize rows={2}
+								className="full-width new-post-text-area"
+								placeholder="insert comment here..." 
+								value={this.state.body}
+								onChange={ event => this.setState({'body': event.target.value})} />
+					</Col>
+				</Row>
+				<Row className="full-width">
+					<Col xs={9}></Col>
+					<Col xs={3}>
+						<Button color="secondary" onClick={ () => this.clearComment() } > Clear! </Button>
+						<Button color="primary" onClick={ () => this.createComment() } > Create! </Button>
+					</Col>
+				</Row>                   
+			</Row>
 		)
 	}
 }

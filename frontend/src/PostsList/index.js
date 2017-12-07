@@ -61,12 +61,11 @@ class PostsList extends Component {
 						<CategoriesList />
 					</Col>
 					<Col xs={3}>
-						<div className="add-post-frame" >
+						<div className="add-post-frame" onClick={ () => this.props.toogleNewPost() } >
 							<span>Add Post</span> 			
 							<FaPlusCircle 
 								className="add-button"
-								size={30} 
-								onClick={ () => this.props.toogleNewPost() } />
+								size={30} />
 						</div>
 					</Col>
 					

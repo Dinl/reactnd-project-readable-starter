@@ -3,10 +3,19 @@ import * as ReadableAPI from "../readable-api";
 /**
  * ACTIONS
  */
+import { toogle } from '../NewPost/actions'
 export const REMOVE_POST = 'REMOVE_POST';
 export const REMOVED_POST = 'REMOVED_POST'
 export const REQUEST_VOTE = 'REQUEST_VOTE';
 export const RECEIVED_VOTE = 'RECEIVED_VOTE';
+
+
+/**
+ * OPEN EDIT MODAL ACTION
+ */
+export const editPost = id => dispatch => {
+	dispatch(toogle(id));
+};
 
 /**
  * DELETE POST ACTION

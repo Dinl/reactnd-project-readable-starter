@@ -8,9 +8,10 @@ import { Row, Col } from 'reactstrap';
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down';
 import FaTrashO from 'react-icons/lib/fa/trash-o';
+import FaEdit from 'react-icons/lib/fa/edit';
 import GoCommentDiscussion from 'react-icons/lib/go/comment-discussion';
 
-import { deletePost, votePost } from './actions'
+import { editPost, deletePost, votePost } from './actions'
 
 class Post extends Component {
 
@@ -35,9 +36,11 @@ class Post extends Component {
 						</Col>
 						<Col xs={6} className="category-frame no-padding-right">
 							<div className="category">
-								{post.category}
+								{post.category}								
 								<FaTrashO className="delete-post-icon"
 									onClick={ () => this.props.deletePost(post.id) } />
+								<FaEdit className="delete-post-icon"
+									onClick={ () => this.props.editPost(post.id) } />
 							</div>
 						</Col>
 					</Row>
@@ -116,6 +119,7 @@ function mapStateToProps ({postReducer}) {
 
 function mapDispatchToProps (dispatch) {
 	return {
+		editPost: data => dispatch(editPost(data)),
 		deletePost: data => dispatch(deletePost(data)),
 		vote: (id, vote) => dispatch(votePost(id, vote))
 	}
