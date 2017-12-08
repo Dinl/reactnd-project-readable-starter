@@ -15,10 +15,7 @@ export function newPostReducer (state = {isOpen: false}, actionData) {
 			const { id } = actionData;
 			return {
 				...state,
-				title: state.isOpen ? state.title : "",
-				category: state.isOpen ? state.category : "",
-				author: state.isOpen ? state.author : "",
-				body: state.isOpen ? state.body : "",
+				post: !state.isOpen ? post : {},
 				isOpen: !state.isOpen,
 				id
 			}

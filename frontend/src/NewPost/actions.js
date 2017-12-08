@@ -47,6 +47,7 @@ export const addPost = post => dispatch => {
 };
 
 export const editPost = post => dispatch => {
+    debugger
 	ReadableAPI.editPost(post).then(res => {
         dispatch(editedPost(res));
         dispatch(toogle());

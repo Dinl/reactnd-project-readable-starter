@@ -24,6 +24,15 @@ class NewPost extends Component {
         this.props.addPost(newPost);
     }
 
+    editPost = () => {
+        let editPost = {
+            id: this.state.id,
+            title: this.state.title,
+            body: this.state.body
+        }
+        this.props.editPost(editPost);
+    }
+
     clearPost = () => {
         this.setState({
             title: "",
@@ -42,6 +51,7 @@ class NewPost extends Component {
 		if(!post) return;
 
 		this.setState({
+            id: post.id,
 			title: post.title,
 			category: post.category,
 			body: post.body,
