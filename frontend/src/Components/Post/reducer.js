@@ -3,7 +3,7 @@ import {
 	REMOVED_POST, 
 	REQUEST_VOTE, 
 	RECEIVED_VOTE,
-} from './actions'
+} from '../actions'
 
 export function postReducer (state = {}, action) {
     switch (action.type) {

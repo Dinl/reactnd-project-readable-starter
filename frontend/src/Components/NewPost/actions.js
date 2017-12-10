@@ -1,9 +1,11 @@
-import * as ReadableAPI from "../readable-api";
+import * as ReadableAPI from "../../readable-api";
 
-export const CREATED_POST = 'CREATED_POST'
-export const EDITED_POST = 'EDITED_POST'
-export const RECEIVE_POST = 'RECEIVE_POST'
-export const TOOGLE = 'TOOGLE'
+import {
+    CREATED_POST, 
+    EDITED_POST, 
+    RECEIVE_POST, 
+    TOOGLE
+} from '../actions'
 
 export const createdPost = post => {
     return {

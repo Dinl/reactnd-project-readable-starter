@@ -1,6 +1,6 @@
 import {
     FILTER_POSTS
-} from './actions'
+} from '../actions'
 
 
 export function searchBar (state = { query: "" }, actionData) {

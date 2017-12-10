@@ -29,7 +29,7 @@ class Post extends Component {
 						<Col xs={6} className="title">
 							{detail && <b>{post.title}</b> }
 							{!detail && 
-								<Link to={`/post/${post.id}`}>
+								<Link to={`/${post.category}/${post.id}`}>
 									<b>{post.title}</b>
 								</Link>
 							}							
@@ -55,7 +55,7 @@ class Post extends Component {
 						</Col>
 						<Col xs={6}>
 							{!detail && 
-								<Link to={`/post/${post.id}`}
+								<Link to={`/${post.category}/${post.id}`}
 									className="post-comments-icon">
 									<GoCommentDiscussion />
 									{post.commentCount}

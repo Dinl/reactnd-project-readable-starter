@@ -1,7 +1,10 @@
-import * as ReadableAPI from "../readable-api";
+import * as ReadableAPI from "../../readable-api";
 
-export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
-export const ADD_COMMENT = 'ADD_COMMENT'
+import {
+    RECEIVE_COMMENT, 
+    ADD_COMMENT
+} from '../actions'
+
 
 export const receiveComment = comment => {
     return {

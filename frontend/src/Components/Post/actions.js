@@ -1,14 +1,15 @@
-import * as ReadableAPI from "../readable-api";
+import * as ReadableAPI from "../../readable-api";
 
 /**
  * ACTIONS
  */
 import { toogle } from '../NewPost/actions'
-export const REMOVE_POST = 'REMOVE_POST';
-export const REMOVED_POST = 'REMOVED_POST'
-export const REQUEST_VOTE = 'REQUEST_VOTE';
-export const RECEIVED_VOTE = 'RECEIVED_VOTE';
-
+import {
+	REMOVE_POST, 
+	REMOVED_POST, 
+	REQUEST_VOTE, 
+	RECEIVED_VOTE
+} from '../actions';
 
 /**
  * OPEN EDIT MODAL ACTION

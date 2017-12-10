@@ -1,11 +1,13 @@
-import * as ReadableAPI from "../readable-api";
+import * as ReadableAPI from "../../readable-api";
 
 /**
  * ACTIONS
  */
-export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
-export const REMOVED_COMMENT = 'REMOVED_COMMENT';
-export const REQUEST_COMMENT_OPERATION = 'REQUEST_COMMENT_OPERATION';
+import {
+	RECEIVE_COMMENTS, 
+	REMOVED_COMMENT, 
+	REQUEST_COMMENT_OPERATION
+} from '../actions';
 
 /**
  * Generic function to any request to the server

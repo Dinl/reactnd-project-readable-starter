@@ -1,7 +1,7 @@
 import {
     RECEIVE_COMMENT,
     ADD_COMMENT
-} from './actions'
+} from '../actions'
 
 export function newComment (state = { }, actionData) {
     switch (actionData.type) {

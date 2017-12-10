@@ -1,6 +1,6 @@
 import {
     CHANGE_SORT
-} from './actions'
+} from '../actions'
 
 
 export function sortMenu (state = { sortType: "vote-asc" }, actionData) {

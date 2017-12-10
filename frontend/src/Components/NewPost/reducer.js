@@ -1,7 +1,7 @@
 import {
 	RECEIVE_POST,
 	TOOGLE
-} from './actions'
+} from '../actions'
 
 export function newPostReducer (state = {isOpen: false}, actionData) {
     switch (actionData.type) {

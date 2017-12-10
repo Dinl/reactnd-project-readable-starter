@@ -1,9 +1,11 @@
-import * as ReadableAPI from "../readable-api";
+import * as ReadableAPI from "../../readable-api";
 
-export const ADD_POST = 'ADD_POST'
-export const REMOVE_POST = 'REMOVE_POST'
-export const REQUEST_POSTS = "REQUEST_POSTS";
-export const RECEIVE_POSTS = "RECEIVE_POSTS";
+import {
+	ADD_POST, 
+	REMOVE_POST, 
+	REQUEST_POSTS, 
+	RECEIVE_POSTS
+} from '../actions'
 
 export const requestPosts = () =>  {
 	return {

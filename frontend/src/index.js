@@ -1,15 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { createStore, applyMiddleware, compose } from 'redux'
-import { Provider } from 'react-redux'
 import thunk from "redux-thunk";
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { createStore, applyMiddleware, compose } from 'redux';
 
-import reducer from './reducers'
-
+//Styles
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
+
+//Components
 import App from './App';
+import reducer from './Components/reducers'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

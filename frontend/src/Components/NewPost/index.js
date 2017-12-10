@@ -4,7 +4,7 @@ import Select from 'react-select';
 import TextareaAutosize from 'react-autosize-textarea';
 import { Row, Col, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { getPost, addPost, editPost, toogle } from './actions';
-import { guid } from '../utils';
+import { guid } from '../../utils';
 
 class NewPost extends Component {
     state = {

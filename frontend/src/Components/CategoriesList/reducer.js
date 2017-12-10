@@ -1,7 +1,7 @@
 import {
 	REQUEST_CATEGORIES,
 	RECEIVE_CATEGORIES
-} from './actions'
+} from '../actions'
 
 
 export function categoriesList (state = { items: [], isLoading: false}, actionData) {

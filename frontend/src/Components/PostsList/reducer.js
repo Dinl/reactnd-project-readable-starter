@@ -1,18 +1,10 @@
 import {
 	REQUEST_POSTS,
-	RECEIVE_POSTS
-} from './actions'
-
-import {
-	RECEIVE_POST,
+	RECEIVE_POSTS,
 	CREATED_POST,
-	EDITED_POST
-} from '../NewPost/actions'
-
-import {
 	REMOVED_POST,
 	RECEIVED_VOTE
-} from '../Post/actions'
+} from '../actions'
 
 export function postsList (state = { items: [], isLoading: false }, actionData) {
     switch (actionData.type) {

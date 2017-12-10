@@ -15,7 +15,7 @@ class CategoriesList extends Component {
 		return (
 			<div className="list-categories-frame">
 				{categories && Array.isArray(categories) && categories.map( (category) => (
-					<Link key={`${category.name}_link`} to={`/category/${category.path}`}>
+					<Link key={`${category.name}_link`} to={`/${category.path}`}>
 						<div className="categorie-frame">
 							<span>
 								{category.name}

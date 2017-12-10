@@ -1,12 +1,12 @@
-import * as ReadableAPI from "../readable-api";
+import * as ReadableAPI from "../../readable-api";
 
 /**
  * ACTIONS
  */
-export const REMOVE_COMMENT = 'REMOVE_COMMENT';
-export const REMOVED_COMMENT = 'REMOVED_COMMENT'
-export const REQUEST_VOTE = 'REQUEST_VOTE';
-export const RECEIVED_VOTE = 'RECEIVED_VOTE';
+import { 
+	REMOVE_COMMENT, 
+	REMOVED_COMMENT, 
+} from '../actions';
 
 /**
  * DELETE POST ACTION

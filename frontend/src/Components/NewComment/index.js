@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getPostsComments, createComment } from './actions'
 import TextareaAutosize from 'react-autosize-textarea';
 import { Row, Col, Button } from 'reactstrap';
-import { guid } from '../utils'
+import { guid } from '../../utils'
 
 class NewComment extends Component {
 	
