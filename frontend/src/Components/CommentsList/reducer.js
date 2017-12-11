@@ -1,5 +1,6 @@
 import {
 	ADD_COMMENT,
+	EDITED_COMMENT,
 	RECEIVE_COMMENTS, 
 	REMOVED_COMMENT, 
 	REQUEST_COMMENT_OPERATION,
@@ -30,6 +31,15 @@ export function commentListReducer (state = {items: [], isLoading: false}, actio
 		case REQUEST_COMMENT_OPERATION:
 			return {
 				...state,
+				isLoading: true,
+			}
+		case EDITED_COMMENT:
+			const { editedComment } = actionData;
+			return {
+				...state,
+				items: state.items.map(comment => (
+					comment.id === editedComment.id ? editedComment : comment
+				)),
 				isLoading: true,
 			}
         default :

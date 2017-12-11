@@ -6,7 +6,24 @@ import * as ReadableAPI from "../../readable-api";
 import { 
 	REMOVE_COMMENT, 
 	REMOVED_COMMENT, 
+	TOOGLE_COMMENT
 } from '../actions';
+
+
+/**
+ * OPEN EDIT COMMENT
+ */
+export function toogleComment (id) {
+    return {
+		type: TOOGLE_COMMENT,
+		id
+    }
+};
+
+export const editComment = id => dispatch => {
+	dispatch(toogleComment(id));
+};
+
 
 /**
  * DELETE POST ACTION

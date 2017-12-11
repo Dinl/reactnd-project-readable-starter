@@ -2,7 +2,7 @@ import {
     REMOVE_COMMENT, 
     REMOVED_COMMENT,
     REQUEST_VOTE,
-    RECEIVED_VOTE 
+    RECEIVED_VOTE,
 } from '../actions'
 
 export function commentReducer (state = { items: [], isLoading: false }, actionData) {

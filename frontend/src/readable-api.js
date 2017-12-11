@@ -27,7 +27,13 @@ export const getPost = (id) =>
  * getPostsComments
  */
 export const getPostsComments = (id) => 
-fetch(`${api}/posts/${id}/comments`, {headers}).then(res => res.json())
+	fetch(`${api}/posts/${id}/comments`, {headers}).then(res => res.json())
+
+/**
+ * getComment
+ */
+export const getComment = (id) => 
+	fetch(`${api}/comments/${id}`, {headers}).then(res => res.json())
 
 	
 /**
@@ -111,4 +117,17 @@ fetch(`${api}/comments`, {
 			"Content-Type": "application/json"
 		},
 	body: JSON.stringify(comment)
+	}).then(response => response.json())
+
+/**
+ * editComment
+ */
+export const editComment = (commnent) =>
+fetch(`${api}/comments/${commnent.id}`, {
+	method: "PUT",
+	headers: {
+			...headers,
+			"Content-Type": "application/json"
+		},
+	body: JSON.stringify(commnent)
 	}).then(response => response.json())

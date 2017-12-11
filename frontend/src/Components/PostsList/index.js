@@ -6,6 +6,7 @@ import CategoriesList from '../CategoriesList'
 import FaPlusCircle from 'react-icons/lib/fa/plus-circle'
 import SortMenu from '../SortMenu'
 import NewPost from '../NewPost'
+import EditComment from '../EditComment'
 import { getPosts } from './actions'
 import { toogle } from '../NewPost/actions'
 
@@ -51,7 +52,10 @@ class PostsList extends Component {
 			<div className="list-posts-frame">
 				<Row className="padding-10t">
 					<Col xs={12}>
-						{!detail && <NewPost />}
+						<NewPost />
+					</Col>
+					<Col xs={12}>
+						<EditComment />
 					</Col>
 				</Row>
 

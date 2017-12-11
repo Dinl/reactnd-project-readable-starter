@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getPostsComments, createComment } from './actions'
+import { createComment } from './actions'
 import TextareaAutosize from 'react-autosize-textarea';
 import { Row, Col, Button } from 'reactstrap';
 import { guid } from '../../utils'
@@ -9,11 +9,6 @@ class NewComment extends Component {
 	
 	state = {
 		body: ""
-	}
-
-	componentDidMount() {
-		const { postId } = this.props;
-		this.props.getPostsComments(postId);
 	}
 
 	createComment () {
@@ -71,7 +66,6 @@ function mapStateToProps ({commentListReducer}) {
 
 function mapDispatchToProps (dispatch) {
 	return {
-		getPostsComments: data => dispatch(getPostsComments(data)),
 		createComment: data => dispatch(createComment(data))
 	}
 }

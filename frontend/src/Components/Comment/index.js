@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Timestamp from 'react-timestamp';
+import FaEdit from 'react-icons/lib/fa/edit';
 import FaTrashO from 'react-icons/lib/fa/trash-o';
-import { deleteComment } from './actions'
+import { deleteComment, editComment } from './actions'
 import { Row, Col } from 'reactstrap';
 
 class Comment extends Component {
@@ -22,6 +23,7 @@ class Comment extends Component {
 						</Col>
 						<Col xs={6}>
 							<FaTrashO className="delete-comment-icon" onClick={ () => this.props.deleteComment(comment.id) } />
+							<FaEdit className="delete-post-icon" onClick={ () => this.props.editComment(comment.id) } />
 							<Timestamp className="comment-date" time={comment.date} format='ago' />	
 						</Col>		
 					</Row>
@@ -42,6 +44,7 @@ function mapStateToProps ({commentReducer}) {
 
 function mapDispatchToProps (dispatch) {
 	return {
+		editComment: data => dispatch(editComment(data)),
 		deleteComment: data => dispatch(deleteComment(data))
 	}
 }

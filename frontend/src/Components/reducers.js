@@ -9,7 +9,8 @@ import { sortMenu } from './SortMenu/reducer'
 import { newPostReducer } from './NewPost/reducer'
 import { commentListReducer } from './CommentsList/reducer'
 import { commentReducer } from './Comment/reducer'
-
+import { voteReducer } from './Vote/reducer'
+import { editCommentReducer } from './EditComment/reducer'
 
 export default combineReducers({
 	postReducer, 
@@ -18,6 +19,8 @@ export default combineReducers({
 	categoriesList, 
 	sortMenu, 
 	newPostReducer,
+	editCommentReducer,
 	commentListReducer,
-	commentReducer
+	commentReducer,
+	voteReducer
 });

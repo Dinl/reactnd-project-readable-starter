@@ -6,9 +6,7 @@ import * as ReadableAPI from "../../readable-api";
 import { toogle } from '../NewPost/actions'
 import {
 	REMOVE_POST, 
-	REMOVED_POST, 
-	REQUEST_VOTE, 
-	RECEIVED_VOTE
+	REMOVED_POST
 } from '../actions';
 
 /**
@@ -40,28 +38,3 @@ export const deletePost = id => dispatch => {
 		dispatch(removedPost(post));
 	});
 };
-
-/**
- * VOTE ACTIONS
- */
-
-export function requestVote () {
-    return {
-        type: REQUEST_VOTE,
-    }
-}
-
-export function receivedVote (post) {
-    return {
-		type: RECEIVED_VOTE,
-		post
-    }
-}
-
-export const votePost = (id, vote) => dispatch => {
-	dispatch(requestVote());
-	ReadableAPI.votePost(id, {"option": vote}).then(post => {
-		dispatch(receivedVote(post));
-	});
-};
-

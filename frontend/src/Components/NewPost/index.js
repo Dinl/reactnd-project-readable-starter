@@ -28,7 +28,8 @@ class NewPost extends Component {
         let editPost = {
             id: this.state.id,
             title: this.state.title,
-            body: this.state.body
+            body: this.state.body,
+            category: this.state.category
         }
         this.props.editPost(editPost);
     }
@@ -57,8 +58,7 @@ class NewPost extends Component {
 			body: post.body,
 			author: post.author,
 			isEdit: true
-		});
-		
+		});		
 	  }
 
     
